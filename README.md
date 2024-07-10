@@ -1,2 +1,2 @@
 # TTLforUniv
-Transparency in Teaching Load - a prototype database for university capacity management
+This project will be a simplistic prototype of university teaching capacity management system. TTL stands for Transparency in Teaching Load: there will be easy query workload, work load distribution, payment, and functions like accountability in workload assignment will be added. The backend is a simple SQL relational database -- already the mature industrial standard in the business world. As a prototype, it are based the minimalistic SQLite3. 
