@@ -1,0 +1,7 @@
+SELECT COURSE_INFO.Ccode, CName, Task, Unit 
+   FROM TL_ASSIGN, COURSE_INFO, ACTIVITY_TYPE
+   WHERE COURSE_INFO.Ccode = TL_ASSIGN.Ccode AND
+         ACTIVITY_TYPE.Type = TL_ASSIGN.Type AND
+         Pid = 175028 AND 
+         isValid = 1
+   ORDER BY COURSE_INFO.Ccode, TL_ASSIGN.Type

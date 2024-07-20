@@ -23,6 +23,7 @@ CREATE TABLE COURSE_INFO (
     CDesc     char(500)
 );
 
+
 CREATE TABLE COURSE_ENROLL (
     Ccode     char(10)    UNIQUE NOT NULL,
     StuNum    integer     NOT NULL CHECK(StuNum>0)
@@ -54,6 +55,33 @@ CREATE TABLE TL_ASSIGN (
     */
     Unit      integer     NOT NULL,
     XtraPay   real        NOT NULL CHECK(XtraPay>=0),
-    AsmtNote  char(100)
+    isValid   integer     NOT NULL DEFAULT 1,
+    /* 
+    1: Valid
+    0: Withdrawn
+    For auditing purpose, the teaching load manager is NOT ALLOWED to edit
+    or delete a record after it has been created. The only thing that the
+    manager can do is to withdraw it, by change validity to 0 and create 
+    a new record if necessary. At that time, the RecId and the reason for
+    revoking must be entered into the table of REVOKE_LIST.
+    */
+    AsmtNote  char(300)
 );
 
+CREATE TABLE ACTIVITY_TYPE (
+    Type      char(1)     NOT NULL,
+    Task      char(20)    NOT NULL
+);
+
+INSERT INTO ACTIVITY_TYPE
+    (Type, Task)
+VALUES
+    ("L", "Lecture"),
+    ("T", "Tutorial"),
+    ("C", "Coordination"),
+    ("X", "Miscellaneous");
+
+CREATE TABLE REVOKE_LIST (
+    RecId     integer     NOT NULL,
+    Reason    char(300)   NOT NULL
+);
