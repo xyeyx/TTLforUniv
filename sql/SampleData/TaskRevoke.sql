@@ -15,7 +15,8 @@ SELECT RecId, COURSE_INFO.Ccode, CName, Task, Unit
 INSERT INTO REVOKE_LIST (RecId, Reason)
   SELECT RecId, 
   "Wong Has resigned. He's now a banker in JPM. What a stupid guy, too bad!!!" AS Reason
-  FROM TL_ASSIGN WHERE Pid = 382551;
+  FROM TL_ASSIGN WHERE
+  Pid = 382551 AND isValid = 1;
 
 /* 
 Update validity for teaching assignments that are revoked.
